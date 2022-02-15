@@ -1,5 +1,6 @@
 const dht = require('@hyperswarm/dht')
 const Speaker = require('speaker')
+const node = new dht()
 
 // Create the Speaker instance
 const speaker = new Speaker({
@@ -8,12 +9,12 @@ const speaker = new Speaker({
   sampleRate: 48000, // 48000 Hz sample rate
 })
 
-const node = new dht()
-
-const buf = Buffer.from('f5a041429288fcf388f0301580b926f9729c11bc21f11c7b0c62d231a0667e1b', 'hex')
-
-const socket = node.connect(buf)
-
-socket.on('open', () => {
-  socket.pipe(speaker)
-})
+module.exports = (key) => {
+  const buf = Buffer.from(key, 'hex')
+  const socket = node.connect(buf)
+  socket.on('open', () => {
+    console.log('Connected to host\n')
+    console.log('Ctrl + C to stop')
+    socket.pipe(speaker)
+  })
+}

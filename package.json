@@ -1,16 +1,20 @@
 {
-  "name": "hypermusic",
+  "name": "hyperspeaker",
   "version": "1.0.0",
   "description": "",
+  "bin": {
+    "hyperspeaker": "index.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Solvencino",
+  "license": "MIT",
   "dependencies": {
     "@hyperswarm/dht": "^5.0.16",
+    "minimist": "^1.2.5",
     "speaker": "^0.5.3"
   }
 }
