@@ -3,7 +3,9 @@ const cp = require('child_process')
 const node = new dht()
 const os = require('os')
 
-module.exports = (speaker) => {
+module.exports = () => {
+  const speaker = cp.execSync(`pacmd list-sinks | grep -e '*' -e 'name:'`).toString().match(RegExp(`(?<=<)(.*?)(?=>)`))[0]
+
   const sockets = []
 
   const proc =
